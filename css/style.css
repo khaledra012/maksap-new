@@ -1,28 +1,53 @@
 /* الألوان الأساسية */
 :root {
     --primary-color: #1B4C74;
-    --cta-color: #449AD7; /* الأزرق الفاتح للزر كما في الصورة */
+    --cta-color: #449AD7; 
     --hover-gold: #FFC647;
     --secone-color:#1A3C61;
 }
+/* تطبيق الخط على الجسم الرئيسي للموقع */
+body {
+    font-family: 'Cairo', sans-serif !important;
+}
 
+/* تخصيص الأوزان للعناوين (اختياري لضمان الشكل) */
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 800; /* الوزن العريض اللي ظاهر في الصورة */
+}
+
+p, span, a {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400; /* الوزن العادي للقراءة */
+}
 /* الهيدر */
 .navbar {
     background-color: var(--primary-color) !important;
-    padding-top: 10px !important;    /* تقليل المسافة العلوية جداً */
-    padding-bottom: 2px !important; /* تقليل المسافة السفلية جداً */
-    margin-bottom: 0 !important;    /* إلغاء أي هامش سفلي */
-    min-height: 60px !important;    /* تحديد ارتفاع نحيف للهيدر */
+    padding-top: 10px !important;    
+    padding-bottom: 2px !important; 
+    margin-bottom: 0 !important;   
+    min-height: 60px !important;  
 }
-/* مقاس اللوجو الجديد */
 .main-logo {
     max-width: 172px;
     width: 172px;
-    /* height: auto; */
     object-fit: contain;
     max-height: 70px
 }
 
+.navbar-nav .nav-link, 
+.nav-item, 
+.navbar-brand {
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 600; /* هذا الوزن يعطيك نفس ثقل الخط في الصورة */
+    font-size: 16px;  /* الحجم المثالي للهيدر */
+}
+
+/* زر "تواصل معنا" في الهيدر */
+.btn-outline-light, .btn-cta {
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 700; /* الزر دائماً يفضل يكون أثقل قليلاً */
+}
 /* تنسيق الروابط */
 .navbar-nav .nav-link {
     color: #ffffff !important;
@@ -55,7 +80,6 @@
     transform: translateY(-2px);
 }
 
-/* الـ Dropdown */
 .dropdown-menu {
     text-align: right;
     border-top: 3px solid var(--hover-gold);
@@ -63,23 +87,29 @@
 }
 
 /* Hero Section Settings */
-/* Hero Section بدون شفافية ومع اللون الأساسي */
-/* تقليل المسافات في الـ Hero Section */
+
 .hero-section {
+       position: relative;
+    z-index: 10; 
     background-color: var(--primary-color);
-    /* قللنا الـ padding من فوق (Top) ليكون 40px بدلاً من 100px */
     padding: 0 0 80px 0; 
-    min-height: auto; /* بدل 80vh عشان السكشن مياخدش طول الشاشة كله لو المحتوى قليل */
+    min-height: auto;
     display: flex;
     align-items: center;
+    
+    position: relative; 
+    overflow: hidden;   
 }
-
-/* إلغاء أي هوامش افتراضية في اللوجو أو العناوين داخل الـ Hero */
 .hero-logo {
     margin-top: 0 !important;
     margin-bottom: 20px !important;
+    z-index: 2; 
+    position: relative;
 }
-
+.hero-logo, .hero-btns, h1, p {
+    position: relative;
+    z-index: 10;
+}
 .hero-section h1 {
     margin-top: 0 !important;
 }
@@ -135,7 +165,6 @@
     height: auto;
 }
 
-/* Active Card (Like the middle one in image) */
 .active-card {
     border: 2px solid var(--secondary-color);
     background: rgba(68, 154, 215, 0.1);
@@ -164,17 +193,17 @@
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
-/*  */
-/* السكشن بالكامل */
+
+
+
+
 /* تنسيق السكشن العام */
-/* جميع التنسيقات محصورة داخل السكشن فقط */
 #unique-creative-section {
     background-color: var(--secone-color);
     font-family: 'Cairo', sans-serif;
     color: #fff;
 }
 
-/* العنوان */
 #unique-creative-section .creative-main-title {
     color: #FDC057;
     font-weight: 700;
@@ -182,7 +211,6 @@
     margin-bottom: 0;
 }
 
-/* الكارد (الصندوق) */
 #unique-creative-section .creative-card {
     background: linear-gradient(135deg, #2b5682 0%, #3e7ab5 100%);
     border-radius: 15px;
@@ -194,7 +222,6 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* نصوص داخل الكارد */
 #unique-creative-section .creative-card h3 {
     font-weight: 700;
     margin-bottom: 1rem;
@@ -202,7 +229,7 @@
 }
 
 #unique-creative-section .creative-card ul {
-    list-style: none; /* إلغاء التنقيط الافتراضي */
+    list-style: none; 
     padding: 0;
     margin: 1rem 0 0 0;
 }
@@ -215,7 +242,6 @@
     font-size: 1.1rem;
 }
 
-/* النقطة الصفراء الخاصة فقط بهذا السكشن */
 #unique-creative-section .creative-card ul li::before {
     content: '•';
     color: #FDC057;
@@ -225,7 +251,6 @@
     top: -5px;
 }
 
-/* الأزرار */
 #unique-creative-section .creative-btn {
     background-color: #5587a8;
     color: white;
@@ -248,7 +273,6 @@
     transform: scale(1.05);
 }
 
-/* الأنيميشن للصورة */
 #unique-creative-section .creative-float-anim {
     animation: creativeFloat 6s ease-in-out infinite;
 }
@@ -258,7 +282,6 @@
     50% { transform: translateY(-20px); }
 }
 
-/* تأثير الظهور والاختفاء للنص */
 #unique-creative-section .creative-fade-box {
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
@@ -275,15 +298,13 @@
     }
 }
 /* =========================================
-   تنسيقات الجزء الجديد (حدد مسارك)
+   تنسيقات القسم المميز
    ========================================= */
 
-/* خط فاصل خفيف فوق الجزء الجديد (اختياري) */
 #unique-creative-section .border-top-custom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* عنوان الجزء الجديد */
 #unique-creative-section .path-title {
     color: #ffffff;
     font-weight: 700;
@@ -291,14 +312,12 @@
     margin-bottom: 1.5rem;
 }
 
-/* تلوين كلمة "مكسب" باللون الأصفر */
 #unique-creative-section .highlight-gold {
     color: #FDC057;
     position: relative;
     display: inline-block;
 }
 
-/* زخرفة بسيطة تحت كلمة مكسب (اختياري) */
 #unique-creative-section .highlight-gold::after {
     content: '';
     position: absolute;
@@ -311,17 +330,19 @@
     border-radius: 2px;
 }
 
-/* تنسيق الفقرة النصية */
 #unique-creative-section .path-desc {
-    color: #e0e0e0;       /* لون أبيض مائل للرمادي لراحة العين */
-    font-size: 1.25rem;   /* حجم خط مقروء */
-    line-height: 1.8;     /* تباعد أسطر مريح */
+    color: #e0e0e0;       
+    font-size: 1.25rem;  
+    line-height: 1.8;     
     font-weight: 400;
-    max-width: 900px;     /* عشان النص ميمطش بعرض الشاشة كلها */
-    margin: 0 auto;       /* توسيط البلوك */
+    max-width: 900px;     
+    margin: 0 auto;       
 }
 
-/* تحسين للموبايل للجزء الجديد */
+#unique-creative-section .img-fluid {
+    max-width: 70%;
+}
+
 @media (max-width: 768px) {
     #unique-creative-section .path-title {
         font-size: 1.8rem;
@@ -337,7 +358,7 @@
    ========================================= */
 
 #stats-section {
-    background-color: var(--primary-color); /* نفس لون السكشن السابق لدمجهم بصرياً */
+    background-color: var(--primary-color); 
     font-family: 'Cairo', sans-serif;
     position: relative;
     padding-top: 3rem;
@@ -363,9 +384,8 @@
     margin: 0 auto;
 }
 
-/* --- صورة التابلت --- */
 #stats-section .floating-tablet {
-    max-width: 50%; /* تحكم في حجم الصورة */
+    max-width: 50%; 
     height: auto;
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4)); /* ظل قوي للواقعية */
     animation: tabletFloat 5s ease-in-out infinite;
@@ -376,7 +396,6 @@
     50% { transform: translateY(-15px); }
 }
 
-/* --- كروت الإحصائيات --- */
 #stats-section .stat-card {
     background: linear-gradient(180deg, #2b5682 0%, #1A3C61 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -394,7 +413,7 @@
 #stats-section .stat-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    border-color: #FDC057; /* إطار أصفر عند الهوفر */
+    border-color: #FDC057; 
 }
 
 #stats-section .counter-value {
@@ -402,19 +421,112 @@
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 0.5rem;
-    font-family: sans-serif; /* الأرقام تكون أوضح بخط إنجليزي أو sans */
+    font-family: sans-serif; 
 }
 
 #stats-section .stat-label {
-    color: #FDC057; /* اللون الذهبي للنصوص تحت الأرقام */
+    color: #FDC057; 
     font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
 }
 
-/* تنسيق للموبايل */
 @media (max-width: 768px) {
     #stats-section .stats-title { font-size: 1.8rem; }
     #stats-section .counter-value { font-size: 2.2rem; }
     #stats-section .floating-tablet { max-width: 100%; }
+}
+/* السكشن الرئيسي */
+.testimonials-section {
+    background-color: #1b4c74; /* اللون الأزرق الأساسي للهيرو */
+    padding: 80px 0;
+    position: relative;
+}
+
+/* تنسيق الكارت */
+.testimonial-card {
+    background-color: #0d3a5d;
+    border-radius: 15px;
+    padding: 40px 30px;
+    
+    /* === الحل هنا === */
+    width: 100%;       /* لضمان أخذ العرض كامل */
+    display: flex;     /* تفعيل الفليكس داخل الكارت */
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    justify-content: space-between; /* توزيع المسافات بين النص والنجوم */
+    height: 100%;      /* إجبار الكارت على أخذ طول السلايد (الأطول بينهم) */
+    /* ================ */
+    
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+.testimonials-slider .swiper-slide {
+    height: auto; /* يسمح للسلايد بالتمدد */
+    display: flex; /* يجعل الكارت بداخله يتمدد */
+}
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--hover-gold);
+}
+
+.testimonial-text {
+    flex-grow: 1; /* يجعل النص يستهلك المساحة الزائدة */
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.client-name {
+    color: var(--hover-gold); /* اللون الذهبي */
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* حاوية النجوم (الكبسولة) */
+.stars-container {
+    display: flex;
+    justify-content: center;
+}
+
+.stars-pill {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--hover-gold);
+    padding: 6px 25px;
+    border-radius: 50px;
+}
+
+.stars-pill i {
+    color: var(--hover-gold);
+    font-size: 14px;
+    margin: 0 2px;
+}
+
+/* تنسيق الأسهم (Chevron) */
+.custom-arrow {
+    color: #ffffff !important;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.custom-arrow:hover {
+    opacity: 1;
+    color: var(--hover-gold) !important;
+}
+
+.custom-arrow::after {
+    display: none; /* إخفاء سهم سويبر الافتراضي */
+}
+
+/* تنسيق النقاط (Dots) */
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--hover-gold) !important;
+    opacity: 1;
 }

@@ -122,41 +122,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // كود تشغيل عداد الأرقام عند الوصول للسكشن
 document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll("#stats-section .counter-value");
-  const section = document.querySelector("#stats-section");
-  let started = false; // عشان العداد يشتغل مرة واحدة بس
+    const counters = document.querySelectorAll(".counter-value");
+    
+    const animateCounter = (el) => {
+        const target = +el.getAttribute("data-target");
+        // ضبط السرعة: لو الرقم صغير (زي 12) نخليه يبطئ عشان يبان العد
+        const duration = target < 50 ? 1500 : 2000; 
+        let startTimestamp = null;
 
-  // دالة العد
-  function startCount(el) {
-    const target = +el.getAttribute("data-target");
-    const count = +el.innerText;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            
+            // حساب الرقم الحالي بناءً على نسبة الوقت المنقضي
+            el.innerText = Math.floor(progress * target);
 
-    // سرعة العد (كل ما الرقم زاد، قلل القيمة دي عشان يبقى أسرع)
-    const increment = target / 100;
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                el.innerText = target;
+            }
+        };
 
-    if (count < target) {
-      el.innerText = Math.ceil(count + increment);
-      setTimeout(() => startCount(el), 20);
-    } else {
-      el.innerText = target; // التأكد من وصول الرقم للنهاية
-    }
-  }
+        window.requestAnimationFrame(step);
+    };
 
-  // مراقب السكرول (Intersection Observer)
-  // ده بيشوف هل السكشن ظهر في الشاشة ولا لأ
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !started) {
-          counters.forEach((counter) => startCount(counter));
-          started = true; // منع التكرار
-        }
-      });
+    // استخدام Intersection Observer لمراقبة السكشن
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // التحقق من ظهور السكشن وأن الأنيميشن الخاص بـ AOS قد بدأ أو انتهى
+            if (entry.isIntersecting) {
+                // تأخير بسيط جداً لضمان أن AOS بدأ يظهر العنصر
+                setTimeout(() => {
+                    animateCounter(entry.target);
+                }, 200); 
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 }); 
+
+    counters.forEach(counter => observer.observe(counter));
+});
+var swiper = new Swiper(".testimonials-slider", {
+    slidesPerView: 1, 
+    spaceBetween: 30,
+    loop: true, 
+    centeredSlides: false,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
     },
-    { threshold: 0.3 },
-  ); // 0.3 يعني لما 30% من السكشن يظهر
-
-  if (section) {
-    observer.observe(section);
-  }
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    // التحكم بعدد الكروت حسب حجم الشاشة
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
 });
