@@ -895,7 +895,7 @@ p, span, a {
    تنسيق الفوتر (Footer)
    ========================================= */
 .maksab-footer {
-    background-color: #0b1c2c; 
+    background-color: var(--primary-color); 
     color: #ffffff;
     padding-top: 80px;
     position: relative;
@@ -1022,7 +1022,7 @@ p, span, a {
 
 /* شريط حقوق النشر السفلي */
 .footer-bottom {
-    background-color: #07121d; 
+    background-color: var(--secone-color); 
     padding: 20px 0;
     margin-top: 50px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
