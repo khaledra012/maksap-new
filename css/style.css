@@ -5,6 +5,12 @@
     --hover-gold: #FFC647;
     --secone-color:#1A3C61;
 }
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 /* تطبيق الخط على الجسم الرئيسي للموقع */
 body {
     font-family: 'Cairo', sans-serif !important;
