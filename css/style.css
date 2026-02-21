@@ -895,7 +895,7 @@ p, span, a {
    تنسيق الفوتر (Footer)
    ========================================= */
 .maksab-footer {
-    background-color: var(--primary-color); 
+    background-color: var(--secone-color); 
     color: #ffffff;
     padding-top: 80px;
     position: relative;
@@ -1088,6 +1088,81 @@ p, span, a {
     background-color: #ffffff;
     color: var(--primary-color);
     transform: translateY(-5px);
+}
+
+/* === تعديلات الموبايل (لتوسيط محتوى الفوتر بالكامل) === */
+@media (max-width: 767px) {
+    /* توسيط النصوص في كل الأعمدة */
+    .maksab-footer .col-lg-4,
+    .maksab-footer .col-lg-3,
+    .maksab-footer .footer-brand {
+        text-align: center;
+        margin-bottom: 30px; /* مسافة إضافية بين الأقسام في الموبايل */
+    }
+
+    /* توسيط اللوجو */
+    .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    /* توسيط الخط الذهبي تحت العناوين */
+    .footer-title::after {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    /* توسيط أيقونات التواصل (الهاتف والإيميل) */
+    .footer-contact-list li {
+        justify-content: center;
+    }
+
+    /* توسيط روابط الصفحات والخدمات */
+    .footer-links a {
+        justify-content: center;
+    }
+
+    /* توسيط أيقونات السوشيال ميديا وتظبيط المسافات بينها */
+    .social-links {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .social-links a {
+        margin: 0 5px; /* توزيع المسافات يمين ويسار الأيقونة */
+    }
+}
+
+/* === توسيط "روابط سريعة" و "خدماتنا" في جميع الشاشات === */
+
+/* 1. توسيط العناوين */
+.footer-title {
+    text-align: center !important;
+}
+
+/* 2. توسيط الخط الذهبي اللي تحت العنوان بالظبط */
+.footer-title::after {
+    right: 50% !important;
+    transform: translateX(50%) !important;
+}
+
+/* 3. توسيط القائمة بالكامل تحت العنوان */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 4. التأكد إن السطر واخد العرض كله عشان التوسيط يظبط */
+.footer-links li {
+    width: 100%;
+}
+
+/* 5. توسيط الأيقونة (السهم) مع الكلام */
+.footer-links a {
+    justify-content: center;
 }
 /* صفحه السوشيال فرعيه */
 
@@ -1485,4 +1560,67 @@ p, span, a {
     background-color: #ffffff;
     color: var(--primary-color);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* حاوية الشريط الأساسية - هنا هنشغل الحركة */
+.partners-marquee {
+    display: flex;
+    width: max-content;
+    animation: scroll-rtl 35s linear infinite;
+    will-change: transform; /* أمر للمتصفح إنه يفضل مركز مع العنصر ده */
+}
+
+/* توقف الحركة لما الماوس ييجي عليها */
+.partners-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* المجموعات - شيلنا منها الأنيميشن وضيفنا تسريع كارت الشاشة */
+.marquee-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 2rem; /* عشان اللحام بين المجموعتين يكون نفس مقاس الـ gap */
+    flex-shrink: 0;
+    
+    /* السطرين دول هم الحل السحري لمشكلة اختفاء الصور */
+    transform: translateZ(0); 
+    -webkit-transform: translateZ(0); 
+}
+
+/* بوكس اللوجو الزجاجي (زي ما هو بدون تغيير) */
+.partner-logo-box {
+    width: 160px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   background: rgba(255, 255, 255, 0.04); /* كانت 0.02 - بقت أوضح */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* كانت 0.05 - بقت أوضح */
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    padding: 15px;
+}
+
+.partner-logo-box:hover {
+background: rgba(255, 255, 255, 0.08); /* إضاءة البوكس بتزيد */
+    border-color: rgba(212, 175, 55, 0.6); /* الإطار الذهبي أوضح */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.partner-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+filter: grayscale(60%) opacity(0.85);
+    transition: all 0.4s ease;
+}
+
+.partner-logo-box:hover img {
+filter: grayscale(0%) opacity(1) brightness(1.1);}
+
+/* الأنيميشن المظبوط للأب (استخدمنا translate3d عشان نجبر كارت الشاشة يشتغل) */
+@keyframes scroll-rtl {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(50%, 0, 0); } /* 50% لأنهم مجموعتين بالضبط */
 }
