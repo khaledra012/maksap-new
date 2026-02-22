@@ -57,18 +57,16 @@
     </div>
 </nav>
 <section class="hero-section text-center text-white d-flex align-items-center">
-         <div class="animated-bg-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </div> 
-    <div class="container">
+    
+    <div id="particles-js"></div> 
+    
+    <div class="container relative-z">
         <div class="hero-logo mb-4" data-aos="zoom-in">
-            <img src="images/logo.png" alt="Maksab Logo" style="width: 250px;">
+            <img src="images/logo.png" alt="Maksab Logo" style="width: 250px; filter: drop-shadow(0 0 15px rgba(212,175,55,0.3));">
         </div>
         
         <h1 class="display-4 fw-bold mb-3" data-aos="fade-up" data-aos-delay="200">
-            خلّي تسويقك ... <span style="color: var(--hover-gold);">مكسب</span>
+            خلّ تسويقك ... <span style="color: var(--hover-gold);">مكسب</span>
         </h1>
         
         <p class="lead mb-5" data-aos="fade-up" data-aos-delay="400">
@@ -76,32 +74,12 @@
         </p>
         
         <div class="hero-btns d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="600">
-               <a href="services.html" class="btn btn-pill-blue">
-                        أكتشف المزيد <i class="fas fa-arrow-left ms-2"></i>
-                    </a>
-                                             <a href="services.html" class="btn btn-pill-blue">
-                    تواصل معنا <i class="fas fa-arrow-left ms-2"></i>
-                    </a>
+            <a href="services.html" class="btn btn-pill-blue">أكتشف المزيد <i class="fas fa-arrow-left ms-2"></i></a>
+            <a href="contact-us.html" class="btn btn-pill-blue">تواصل معنا <i class="fas fa-arrow-left ms-2"></i></a>
         </div>
     </div>
+</section>
 
-<!-- <div class="waves-container">
-    <svg class="silk-waves" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-        <defs>
-            <linearGradient id="silk-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#0f2c50; stop-opacity:1" />
-                <stop offset="30%" style="stop-color:#1B4C74; stop-opacity:1" />
-                <stop offset="70%" style="stop-color:#449ad7; stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#82c7f5; stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        
-     <path class="wave-path layer1" d="M-100,1000 C200,400 800,1200 1100,400 L1100,1000 L-100,1000 Z"></path>
-        <path class="wave-path layer2" d="M-100,1000 C300,300 700,1000 1100,300 L1100,1000 L-100,1000 Z"></path>
-        <path class="wave-path layer3" d="M-100,1000 C400,100 600,800 1100,100 L1100,1000 L-100,1000 Z"></path>>
-    </svg>
-</div> -->
-    </section>
 
 <section class="services-section py-5">
     <div class="container text-center">
@@ -457,6 +435,8 @@
     <script src="js/aos.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/app.js"></script>
     <a href="https://wa.me/+966115004605" class="whatsapp-float shadow" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>

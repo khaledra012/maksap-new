@@ -28,7 +28,7 @@ p, span, a {
 }
 /* الهيدر */
 .navbar {
-    background-color: var(--primary-color) !important;
+    background-color:#20466e !important;
     padding-top: 10px !important;    
     padding-bottom: 2px !important; 
     margin-bottom: 0 !important;   
@@ -146,7 +146,6 @@ p, span, a {
     min-height: auto;
     display: flex;
     align-items: center;
-    
     position: relative; 
     overflow: hidden;   
 }
@@ -163,7 +162,46 @@ p, span, a {
 .hero-section h1 {
     margin-top: 0 !important;
 }
+/* === خلفية الأنيميشن الفخمة (تأثير الأورورا) === */
 
+/* تغليف الأشكال عشان ما تخرجش بره السكشن وتعمل مشاكل */
+/* 1. السكشن الأساسي لازم يكون Relative وعامل Hide لأي حاجة تخرج براه */
+/* --- إعدادات سكشن الـ Particle Network --- */
+
+
+/* طبقة الشبكة التقنية المتحركة */
+
+
+
+/* السكشن الأساسي */
+.hero-section {
+    position: relative;
+    background-color: var(--secone-color); /* اللون الاحتياطي */
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* حاوية المكتبة: تأكد إنها absolute ومالية الشاشة */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* فوق الخلفية السادة */
+}
+
+/* حاوية الكلام: لازم تكون أعلى من الكل */
+.relative-z {
+    position: relative;
+    z-index: 10 !important; 
+    pointer-events: none; /* عشان الماوس يوصل للنقط اللي ورا الكلام ويحركها */
+}
+
+.hero-btns {
+    pointer-events: auto; /* رجع الماوس يشتغل للأزرار بس */
+}
 /* Services Section */
 .services-section {
     background-color: var(--primary-color);
@@ -587,6 +625,17 @@ p, span, a {
     outline: none !important;
 }
 
+/* الأماكن الجديدة للأيقونات الإضافية (5-8) لضمان ظهورها ووضوحها */
+.icon-pos-5 { top: 15%; left: 45%; animation-delay: 1.5s; opacity: 0.6; }
+.icon-pos-6 { bottom: 10%; left: 30%; animation-delay: 2.5s; opacity: 0.6; }
+.icon-pos-7 { top: 45%; right: 8%; animation-delay: 3.5s; opacity: 0.5; }
+.icon-pos-8 { bottom: 35%; left: 5%; animation-delay: 0.5s; opacity: 0.5; }
+
+/* لزيادة وضوح الأيقونات كلها سِنة كمان */
+.tech-icon-circle {
+    background: rgba(255, 255, 255, 0.1) !important; /* خليت الخلفية أوضح */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); /* ضفت توهج ذهبي خفيف */
+}
 /* صفحه الخدمات */
 
 /* تنسيق السكشن العام */
@@ -1164,6 +1213,32 @@ p, span, a {
 .footer-links a {
     justify-content: center;
 }
+
+/* === التوسيط الدقيق والنهائي للفوتر (حل مشكلة المساحة الزائدة) === */
+.footer-links {
+    padding: 0 !important; /* مسح أي مسافة افتراضية للقائمة من اليمين */
+    margin: 0 !important;
+}
+
+.footer-links li {
+    padding: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.footer-links a {
+    display: inline-flex !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    margin: 0 auto !important;
+}
+
+/* إخفاء الأيقونة المخفية في الموبايل لأنها تزاحم النص وتلغي التوسيط */
+@media (max-width: 767px) {
+    .footer-links a i {
+        display: none !important; 
+    }
+}
 /* صفحه السوشيال فرعيه */
 
 /* الحاوية الرئيسية */
@@ -1624,3 +1699,32 @@ filter: grayscale(0%) opacity(1) brightness(1.1);}
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(50%, 0, 0); } /* 50% لأنهم مجموعتين بالضبط */
 }
+
+.service-hero-section {
+    position: relative;
+    background-color: var(--primary-color); 
+    padding: 120px 0 100px; 
+    overflow: hidden;
+    color: #ffffff;
+    min-height: 80vh; /* تأكد من وجود طول كافي للرسم */
+    display: flex;
+    align-items: center;
+}
+
+/* الكلاس بتاعك بعد تعديله لخدمة الأنيميشن الجديد */
+.tech-overlay-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 1; /* رفعنا الشفافية عشان الجزيئات تبان */
+    z-index: 1;
+    pointer-events: none; /* عشان ميغطيش على الزراير */
+}
+
+.relative-z {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+/* باقي تنسيقاتك (العنوان، الزرار، إلخ) تفضل زي ما هي بالظبط بدون تغيير */
