@@ -1,6 +1,13 @@
 /* ==============================================
    تنسيقات الهيرو الموحد 
 ============================================== */
+
+:root {
+    --primary-color: #1B4C74;
+    --cta-color: #449AD7; 
+    --hover-gold: #FFC647;
+    --secone-color:#1A3C61;
+}
 .hero-unified-section {
     position: relative;
     padding: 150px 0 100px; /* مساحات واسعة */
@@ -412,4 +419,251 @@
 
 .navbar{
     background-color:#1B4C74;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* تنسيق قسم المقالات */
+#latest-posts {
+    background: #fdfdfd;
+    padding: 80px 0;
+}
+
+/* شكل الكارت */
+/* إلغاء أي خط تحت اللينكات في الموقع كله عشان النظافة */
+a, a:hover {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+/* حركة بسيطة لما الماوس يروح على الكارت */
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 31, 63, 0.3) !important;
+}
+
+.blog-card:hover img {
+    transform: scale(1.08);
+}
+
+/* تنظيف الـ scrollbar لو حابب */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+/* --- تنسيق كارت مدونة مكسب الاحترافي --- */
+
+/* 1. الحاوية الأساسية للكارت */
+/* --- سكشن كارت المدونة الموحد --- */
+
+#posts-container .blog-card {
+    /* 👇 غير اللون من هنا (ده اللون الكحلي اللي كان شغال) */
+    background-color: #1B4C74 !important; 
+    
+    border-radius: 20px !important;
+    border: none !important;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* تأثير الارتفاع عند الوقوف بالماوس */
+#posts-container .blog-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(0, 31, 63, 0.4) !important;
+    /* 👇 لو عايز لون الخلفية يتغير برضه لما تلمسه بالماوس */
+    background-color: #215a8a !important; 
+}
+
+/* زرار تصفح المقالات (الأزرق اللي في الصورة) */
+
+
+#posts-container .read-more-btn:hover {
+    background-color: #0056b3 !important;
+    transform: scale(1.05);
+}
+
+/* 2. تأثير الـ Hover (الارتفاع والظل) */
+#posts-container .blog-card:hover {
+    transform: translateY(-12px) !important;
+    box-shadow: 0 20px 40px rgba(0, 31, 63, 0.4) !important;
+}
+
+/* 3. حاوية الصورة وتأثير الزووم */
+#posts-container .img-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+#posts-container .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease !important;
+}
+
+#posts-container .blog-card:hover .img-wrapper img {
+    transform: scale(1.1) !important;
+}
+
+/* 4. محتوى الكارت (الكلام) */
+#posts-container .blog-content {
+    padding: 25px !important;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* 5. التاريخ الذهبي */
+#posts-container .blog-date {
+    color: #d4af37 !important; /* الذهبي */
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px;
+    display: block;
+    opacity: 0.9;
+}
+
+/* 6. العنوان الأبيض العريض */
+#posts-container .blog-title {
+    color: #ffffff !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 15px;
+    /* تحديد عدد السطور بـ 2 فقط */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 7. الوصف المختصر (لون هادي ومريح) */
+#posts-container .blog-excerpt {
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/* 8. زر اقرأ المزيد (بدون خطوط) */
+#posts-container .read-more-btn {
+    color: var(--primary-color) !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto; /* يخلي الزرار دايماً تحت */
+    transition: 0.3s ease;
+}
+
+#posts-container .read-more-btn i {
+    font-size: 0.75rem;
+    transition: 0.3s ease;
+}
+
+#posts-container .read-more-btn:hover {
+    color: var(--secone-color) !important;
+}
+
+#posts-container .read-more-btn:hover i {
+    transform: translateX(-5px); /* حركة السهم لليمين/اليسار */
+}
+/* --- تنسيق زرار اقرأ المقال الفخم --- */
+/* تنسيق الكارت باللون الجديد */
+#posts-container .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#posts-container .blog-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 35px rgba(27, 76, 116, 0.4) !important; /* ظل بلون الكارت */
+}
+
+/* زرار اقرأ المقال بتنسيق فخم */
+#posts-container .read-more-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background-color: #007bff !important;
+    color: white !important; /* نص بلون الكارت */
+    padding: 10px 20px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-decoration: none !important;
+    width: fit-content !important;
+    transition: 0.3s all ease !important;
+}
+
+#posts-container .read-more-btn:hover { 
+       background-color: #007bff !important;
+
+    transform: scale(1.05);
+}
+
+#posts-container .read-more-btn i {
+    transition: transform 0.3s ease !important;
+}
+
+#posts-container .read-more-btn:hover i {
+    transform: translateX(-5px);
+}
+
+/* --- الزرار الأزرق زي الصورة --- */
+.read-more-btn {
+    background-color: #007bff !important; /* اللون الأزرق الزاهي */
+    color: #ffffff !important;
+    padding: 12px 30px !important;
+    border-radius: 50px !important; /* شكل بيضاوي */
+    text-decoration: none !important;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.read-more-btn:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-2px);
+}
+
+/* --- تنسيق السلايدر والأسهم --- */
+.postsSwiper {
+    padding: 20px 10px 50px !important;
+}
+
+.custom-nav {
+    color: #1B4C74 !important; /* لون الأسهم كحلي */
+    background: white;
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.custom-nav::after {
+    font-size: 18px !important;
+    font-weight: bold;
 }

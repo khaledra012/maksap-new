@@ -1725,6 +1725,17 @@ filter: grayscale(0%) opacity(1) brightness(1.1);}
     z-index: 2;
 }
 
+.hero-section {
 
+background: linear-gradient(rgba(21, 42, 63, 0.60), rgba(21, 42, 63, 0.60)), url('../images/gemini.png');    
+    background-size: cover;    
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    min-height: 85vh; 
+    position: relative; 
+}
 
-/* باقي تنسيقاتك (العنوان، الزرار، إلخ) تفضل زي ما هي بالظبط بدون تغيير */
+.hero-section .relative-z {
+    z-index: 2;
+}

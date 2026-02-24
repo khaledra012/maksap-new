@@ -122,186 +122,305 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // كود تشغيل عداد الأرقام عند الوصول للسكشن
 document.addEventListener("DOMContentLoaded", () => {
-    const counters = document.querySelectorAll(".counter-value");
-    
-    const animateCounter = (el) => {
-        const target = +el.getAttribute("data-target");
-        // ضبط السرعة: لو الرقم صغير (زي 12) نخليه يبطئ عشان يبان العد
-        const duration = target < 50 ? 1500 : 2000; 
-        let startTimestamp = null;
+  const counters = document.querySelectorAll(".counter-value");
 
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            
-            // حساب الرقم الحالي بناءً على نسبة الوقت المنقضي
-            el.innerText = Math.floor(progress * target);
+  const animateCounter = (el) => {
+    const target = +el.getAttribute("data-target");
+    // ضبط السرعة: لو الرقم صغير (زي 12) نخليه يبطئ عشان يبان العد
+    const duration = target < 50 ? 1500 : 2000;
+    let startTimestamp = null;
 
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                el.innerText = target;
-            }
-        };
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
+      // حساب الرقم الحالي بناءً على نسبة الوقت المنقضي
+      el.innerText = Math.floor(progress * target);
+
+      if (progress < 1) {
         window.requestAnimationFrame(step);
+      } else {
+        el.innerText = target;
+      }
     };
 
-    // استخدام Intersection Observer لمراقبة السكشن
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // التحقق من ظهور السكشن وأن الأنيميشن الخاص بـ AOS قد بدأ أو انتهى
-            if (entry.isIntersecting) {
-                // تأخير بسيط جداً لضمان أن AOS بدأ يظهر العنصر
-                setTimeout(() => {
-                    animateCounter(entry.target);
-                }, 200); 
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 }); 
+    window.requestAnimationFrame(step);
+  };
 
-    counters.forEach(counter => observer.observe(counter));
+  // استخدام Intersection Observer لمراقبة السكشن
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // التحقق من ظهور السكشن وأن الأنيميشن الخاص بـ AOS قد بدأ أو انتهى
+        if (entry.isIntersecting) {
+          // تأخير بسيط جداً لضمان أن AOS بدأ يظهر العنصر
+          setTimeout(() => {
+            animateCounter(entry.target);
+          }, 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
 });
 var swiper = new Swiper(".testimonials-slider", {
-    slidesPerView: 1, 
-    spaceBetween: 30,
-    loop: true, 
-    centeredSlides: false,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  centeredSlides: false,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  // التحكم بعدد الكروت حسب حجم الشاشة
+  breakpoints: {
+    768: {
+      slidesPerView: 2,
     },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
+    1024: {
+      slidesPerView: 3,
     },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    // التحكم بعدد الكروت حسب حجم الشاشة
-    breakpoints: {
-        768: {
-            slidesPerView: 2,
-        },
-        1024: {
-            slidesPerView: 3,
-        }
-    }
+  },
 });
 
 // زر العودة للأعلى
-const scrollTopBtn = document.querySelector('.scroll-top-btn');
+const scrollTopBtn = document.querySelector(".scroll-top-btn");
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        scrollTopBtn.classList.add('show');
-    } else {
-        scrollTopBtn.classList.remove('show');
-    }
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 300) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
 });
 
-scrollTopBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+scrollTopBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 });
 
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
+// const canvas = document.getElementById("particleCanvas");
+// const ctx = canvas.getContext("2d");
 
-let particlesArray;
+// let particlesArray;
 
-// ضبط حجم الكانفاس
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// // ضبط حجم الكانفاس
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
 
-class Particle {
-    constructor(x, y, directionX, directionY, size, color) {
-        this.x = x;
-        this.y = y;
-        this.directionX = directionX;
-        this.directionY = directionY;
-        this.size = size;
-        this.color = color;
-    }
-    // رسم النقطة
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = '#d4af37'; // لون ذهبي مكسب
-        ctx.fill();
-    }
-    // تحديث مكان النقطة
-    update() {
-        if (this.x > canvas.width || this.x < 0) {
-            this.directionX = -this.directionX;
-        }
-        if (this.y > canvas.height || this.y < 0) {
-            this.directionY = -this.directionY;
-        }
-        this.x += this.directionX;
-        this.y += this.directionY;
-        this.draw();
-    }
-}
+// class Particle {
+//   constructor(x, y, directionX, directionY, size, color) {
+//     this.x = x;
+//     this.y = y;
+//     this.directionX = directionX;
+//     this.directionY = directionY;
+//     this.size = size;
+//     this.color = color;
+//   }
+//   // رسم النقطة
+//   draw() {
+//     ctx.beginPath();
+//     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+//     ctx.fillStyle = "#d4af37"; // لون ذهبي مكسب
+//     ctx.fill();
+//   }
+//   // تحديث مكان النقطة
+//   update() {
+//     if (this.x > canvas.width || this.x < 0) {
+//       this.directionX = -this.directionX;
+//     }
+//     if (this.y > canvas.height || this.y < 0) {
+//       this.directionY = -this.directionY;
+//     }
+//     this.x += this.directionX;
+//     this.y += this.directionY;
+//     this.draw();
+//   }
+// }
 
 // إنشاء مجموعة النقط
-function init() {
-    particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 9000;
-    for (let i = 0; i < numberOfParticles; i++) {
-        let size = (Math.random() * 2) + 1;
-        let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
-        let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
-        let directionX = (Math.random() * 2) - 1;
-        let directionY = (Math.random() * 2) - 1;
-        let color = '#d4af37';
+// function init() {
+//   particlesArray = [];
+//   let numberOfParticles = (canvas.height * canvas.width) / 9000;
+//   for (let i = 0; i < numberOfParticles; i++) {
+//     let size = Math.random() * 2 + 1;
+//     let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+//     let y = Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
+//     let directionX = Math.random() * 2 - 1;
+//     let directionY = Math.random() * 2 - 1;
+//     let color = "#d4af37";
 
-        particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
-    }
-}
+//     particlesArray.push(
+//       new Particle(x, y, directionX, directionY, size, color),
+//     );
+//   }
+// }
 
 // رسم الخطوط بين النقط القريبة
-function connect() {
-    let opacityValue = 1;
-    for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-            let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-            if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                opacityValue = 1 - (distance / 20000);
-                ctx.strokeStyle = 'rgba(212, 175, 55,' + opacityValue + ')';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                ctx.stroke();
-            }
-        }
-    }
-}
+// function connect() {
+//   let opacityValue = 1;
+//   for (let a = 0; a < particlesArray.length; a++) {
+//     for (let b = a; b < particlesArray.length; b++) {
+//       let distance =
+//         (particlesArray[a].x - particlesArray[b].x) *
+//           (particlesArray[a].x - particlesArray[b].x) +
+//         (particlesArray[a].y - particlesArray[b].y) *
+//           (particlesArray[a].y - particlesArray[b].y);
+//       if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+//         opacityValue = 1 - distance / 20000;
+//         ctx.strokeStyle = "rgba(212, 175, 55," + opacityValue + ")";
+//         ctx.lineWidth = 1;
+//         ctx.beginPath();
+//         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+//         ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+//         ctx.stroke();
+//       }
+//     }
+//   }
+// }
 
 // تشغيل الأنيميشن
-function animate() {
-    requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
+// function animate() {
+//   requestAnimationFrame(animate);
+//   ctx.clearRect(0, 0, innerWidth, innerHeight);
 
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-    }
-    connect();
-}
+//   for (let i = 0; i < particlesArray.length; i++) {
+//     particlesArray[i].update();
+//   }
+//   connect();
+// }
 
-init();
-animate();
+// init();
+// animate();
 
 // إعادة ضبط الحجم عند تغيير حجم الشاشة
-window.addEventListener('resize', function() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-    init();
+// 1. حماية كود الـ Canvas (عشان ما يطلعلش Error لو العنصر مش موجود)
+// 1. التعامل مع الكانفاس عند تغيير حجم الشاشة
+
+
+window.addEventListener("resize", function () {
+  const canvas = document.querySelector("canvas");
+  if (canvas) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if (typeof init === "function") init();
+  }
 });
+
+// 2. إعدادات Sanity
+const config = {
+  projectId: "fkbhvjqb",
+  dataset: "production",
+  apiVersion: "2021-10-21",
+};
+
+// 3. الاستعلام عن البيانات (جلب الـ Alt والسيو والمقالات مرتبة)
+const QUERY = encodeURIComponent(`*[_type == "post"] | order(publishedAt desc) {
+        title,
+        "slug": slug.current,
+        "imageUrl": mainImage.asset->url,
+        "imageAlt": mainImage.alt, 
+        excerpt,
+        publishedAt
+    }`);
+
+const url = `https://${config.projectId}.api.sanity.io/v${config.apiVersion}/data/query/${config.dataset}?query=${QUERY}`;
+
+// 4. الدالة الرئيسية لجلب وعرض المقالات
+async function loadBlogPosts() {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const posts = data.result;
+
+    const container = document.getElementById("posts-container");
+    if (!container) return;
+
+    container.innerHTML = ""; 
+
+    posts.forEach((post) => {
+      const dateObj = post.publishedAt ? new Date(post.publishedAt) : new Date();
+      const date = dateObj.toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" });
+
+      // الكارت هنا واخد كلاس swiper-slide
+      const postHTML = `
+        <div class="swiper-slide">
+            <div class="blog-card">
+                <div class="img-wrapper" style="height: 200px; overflow: hidden;">
+                    <img src="${post.imageUrl || "assets/img/default.jpg"}" style="width: 100%; height: 100%; object-fit: cover;" alt="${post.imageAlt || post.title}"> 
+                </div>
+                <div class="blog-content" style="padding: 25px; text-align: right; flex-grow: 1; display: flex; flex-direction: column;">
+                    <span style="color: #d4af37; font-size: 0.85rem; margin-bottom: 10px;">${date}</span>
+                    <h3 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 15px;">${post.title}</h3>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px;">
+                        ${post.excerpt ? post.excerpt.substring(0, 80) + "..." : ""}
+                    </p>
+                    <a href="single-post.html?slug=${post.slug}" class="read-more-btn">
+                         <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i> تصفح المقال
+                    </a>
+                </div>
+            </div>
+        </div>
+      `;
+      container.insertAdjacentHTML("beforeend", postHTML);
+    });
+
+    // --- تشغيل السلايدر بعد ما الكروت تنزل ---
+    initSwiper();
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function initSwiper() {
+  new Swiper(".postsSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+}
+
+loadBlogPosts();
+// 5. وظيفة الـ SEO (للاستخدام عند الحاجة في صفحات ديناميكية)
+function updateSEO(post) {
+  if (!post || !post.seo) return;
+  document.title = post.seo.metaTitle || post.title;
+
+  const updateMeta = (name, content) => {
+    let meta = document.querySelector(`meta[name="${name}"]`);
+    if (!meta && content) {
+      meta = document.createElement("meta");
+      meta.name = name;
+      document.head.appendChild(meta);
+    }
+    if (meta) meta.content = content;
+  };
+
+  updateMeta("description", post.seo.metaDescription);
+  updateMeta("keywords", post.seo.keywords);
+}
+
+// انطلاق!
+loadBlogPosts();

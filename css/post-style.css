@@ -1,0 +1,196 @@
+/* =========================================
+   1. الألوان الأساسية (الدارك مود الفخم)
+========================================= */
+:root {--primary-color: #1B4C74;
+    --bg-navy: #1B4C74; /* كحلي غامق جداً */
+    --gold: #FDC057; /* ذهبي زاهي */
+    --text-white: #ffffff;
+    --text-gray: #d1d5db; /* رمادي مريح للقراءة */
+    --secone-color:#1A3C61;
+}
+
+body {
+    background-color: var(--bg-navy);
+    color: var(--text-gray);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   2. الهيدر (شريط التنقل)
+========================================= */
+.post-navbar {
+    background:var(--secone-color) ; /* كحلي أغمق درجة */
+    padding: 15px 0;
+    border-bottom: 2px solid var(--gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.btn-back {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-back:hover { color: var(--text-white); transform: translateX(5px); }
+
+/* =========================================
+   3. التقسيمة الجبارة (CSS Grid)
+========================================= */
+.article-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    /* بنقسم الشاشة: 60% للكلام، و 40% للصورة */
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 60px; /* مسافة كبيرة ومريحة بينهم */
+    align-items: start; /* مهم جداً عشان التثبيت يشتغل */
+}
+
+/* =========================================
+   4. قسم النص (على اليمين)
+========================================= */
+.article-body {
+    padding-bottom: 50px;
+}
+
+.article-date {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.article-title {
+    color: var(--text-white);
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.article-text {
+    font-size: 1.2rem;
+    line-height: 2.1;
+    color: var(--text-gray);
+    text-align: justify;
+}
+
+.article-text p { margin-bottom: 25px; }
+
+.article-text h2 {
+    color: var(--gold);
+    margin: 40px 0 20px;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+/* =========================================
+   5. قسم الصورة (مثبتة + أنيميشن الطلوع والنزول)
+========================================= */
+.article-hero {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px; /* بتثبت بعد 120 بكسل من السقف */
+    z-index: 10;
+}
+
+.article-hero img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 20px;
+    /* تشغيل الأنيميشن السحري */
+    animation: floatUpDown 4s ease-in-out infinite; 
+}
+
+/* 🚀 كود الأنيميشن (الطلوع والنزول) 🚀 */
+@keyframes floatUpDown {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); /* بتطلع لفوق 25 بكسل */ }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   6. رسبونسيف (للموبايل والتابلت)
+========================================= */
+@media (max-width: 992px) {
+    .article-wrapper {
+        grid-template-columns: 1fr; /* نلغي التقسيمة ونخليهم تحت بعض */
+        gap: 30px;
+        margin: 30px auto;
+    }
+    
+    .article-hero {
+        position: relative; /* نلغي التثبيت */
+        top: 0;
+        order: -1; /* نجبر الصورة تظهر فوق الكلام في الموبايل */
+    }
+
+    .article-hero img {
+        max-height: 400px;
+        /* أنيميشن أخف شوية للموبايل */
+        animation: floatMobile 4s ease-in-out infinite;
+    }
+
+    .article-title { font-size: 2.2rem; }
+}
+
+@keyframes floatMobile {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* تنسيق الهيدر */
+.post-navbar {
+    background-color:var(--secone-color); /* الكحلي الغامق */
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    direction: rtl; /* إجباري عشان الترتيب يظبط */
+}
+
+/* زر الرجوع بتنسيق فخم */
+.btn-back {
+    background-color: var(--primary-color); /* ذهبي شفاف خفيف */
+    color: white; /* لون ذهبي */
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: 1px solid #F0A500;
+    text-decoration: none !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: 0.3s all ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-back:hover {
+    background-color: var(--secone-color) !important;
+    transform: scale(1.05);
+}
+
+/* حركة السهم في الزرار */
+.btn-back i {
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-back:hover i {
+    transform: translateX(-5px); /* السهم يتحرك للشمال شوية */
+}
