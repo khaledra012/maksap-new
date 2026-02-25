@@ -66,6 +66,36 @@ a {
     /* الحجم المثالي للهيدر */
 }
 
+/* Adjust navbar for mobile: Logo on the right, Toggler on the left */
+@media (max-width: 991px) {
+    .navbar .container-fluid {
+        display: flex !important;
+        flex-direction: row !important;
+        /* In RTL, this starts from the right */
+        justify-content: space-between !important;
+    }
+
+    .navbar-brand {
+        order: 1 !important;
+        /* Positioned at the start (right in RTL) */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .main-logo {
+        width: 110px !important;
+        max-width: 110px !important;
+    }
+
+    .navbar-toggler {
+        order: 2 !important;
+        /* Positioned at the end (left in RTL) */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+
 /* زر "تواصل معنا" في الهيدر */
 .btn-outline-light,
 .btn-cta {
@@ -1425,6 +1455,7 @@ p {
 
 /* إخفاء الأيقونة المخفية في الموبايل لأنها تزاحم النص وتلغي التوسيط */
 @media (max-width: 767px) {
+
     .footer-links a i {
         display: none !important;
     }

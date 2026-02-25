@@ -1,12 +1,13 @@
 window.addEventListener("load", function () {
   if (document.getElementById("particles-js")) {
+    const isMobile = window.innerWidth < 768;
     particlesJS("particles-js", {
       particles: {
         number: {
-          value: 180, // زيادة العدد ليكون أكثر كثافة
+          value: isMobile ? 60 : 180, // تقليل العدد على الموبايل لتوفير المعالج
           density: { enable: true, value_area: 1000 },
         },
-        color: { value: "#449ad7" }, // لون أزرق مقارب للون الأساسي ومضيء
+        color: { value: "#449ad7" },
         shape: { type: "circle" },
         opacity: {
           value: 0.6,
@@ -15,15 +16,15 @@ window.addEventListener("load", function () {
         },
         size: { value: 3, random: true },
         line_linked: {
-          enable: true,
+          enable: !isMobile, // تعطيل الخطوط على الموبايل لتقليل وقت المعالجة (Render time)
           distance: 140,
-          color: "#449ad7", // لون الخطوط يطابق الجزيئات
+          color: "#449ad7",
           opacity: 0.3,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 2.5, // سرعة متوسطة تعطي إحساس بالهدوء والفخامة
+          speed: isMobile ? 1.5 : 2.5, // سرعة أهدأ قليلاً على الموبايل
           direction: "none",
           random: false,
           straight: false,
@@ -33,7 +34,7 @@ window.addEventListener("load", function () {
       },
       interactivity: {
         events: {
-          onhover: { enable: true, mode: "grab" },
+          onhover: { enable: !isMobile, mode: "grab" }, // تفاعل بسيط فقط على الديسكتوب
           onclick: { enable: true, mode: "push" },
         },
       },

@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://maksab-ksa.com/blog.html">
 </head>
 
@@ -39,11 +38,12 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" data-aos="fade-down">
         <div class="container-fluid ps-0 pe-lg-5">
 
-            <a class="navbar-brand m-0" href="#" data-aos="fade-right" data-aos-delay="200">
-                <img src="images/logo.png" alt="Maksab Logo" class="main-logo">
+            <a class="navbar-brand m-0" href="#" aria-label="الرئيسية" data-aos="fade-right" data-aos-delay="200">
+                <img src="images/logo.png" alt="Maksab Logo" class="main-logo" loading="lazy">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-label="فتح قائمة التنقل">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -122,6 +122,15 @@
 
                 </div>
             </div>
+        </div>
+
+        <!-- Static Wave Divider -->
+        <div class="hero-wave-divider">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path
+                    d="M0,20 C60,60 120,0 200,30 C280,60 320,10 400,40 C480,70 540,5 620,35 C700,65 760,15 840,45 C920,75 980,10 1060,40 C1140,70 1200,20 1280,50 C1360,80 1400,30 1440,50 L1440,120 L0,120 Z"
+                    fill="#1A3C61"></path>
+            </svg>
         </div>
     </section>
     <section id="latest-posts" class="py-5" style="background-color: var(--secone-color); overflow: hidden;">
@@ -227,15 +236,19 @@
         </div>
     </footer>
 
-    <a href="#" class="scroll-top-btn">
+    <a href="#" class="scroll-top-btn" aria-label="العودة للأعلى">
         <i class="fas fa-chevron-up"></i>
     </a>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/swiper-bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <a href="https://wa.me/+966115004605" class="whatsapp-float shadow" target="_blank">
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/aos.js" defer></script>
+    <script src="js/swiper-bundle.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/particles.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <a href="https://wa.me/+966115004605" class="whatsapp-float shadow" target="_blank"
+        aria-label="تواصل معنا عبر واتساب">
         <i class="fab fa-whatsapp"></i>
+    </a>
 </body>
 
 </html>
