@@ -353,9 +353,6 @@ async function loadBlogPosts() {
     container.innerHTML = ""; 
 
     posts.forEach((post) => {
-      const dateObj = post.publishedAt ? new Date(post.publishedAt) : new Date();
-      const date = dateObj.toLocaleDateString("ar-EG", { day: "numeric", month: "long", year: "numeric" });
-
       // الكارت هنا واخد كلاس swiper-slide
       const postHTML = `
         <div class="swiper-slide">
@@ -364,7 +361,6 @@ async function loadBlogPosts() {
                     <img src="${post.imageUrl || "assets/img/default.jpg"}" style="width: 100%; height: 100%; object-fit: cover;" alt="${post.imageAlt || post.title}"> 
                 </div>
                 <div class="blog-content" style="padding: 25px; text-align: right; flex-grow: 1; display: flex; flex-direction: column;">
-                    <span style="color: #d4af37; font-size: 0.85rem; margin-bottom: 10px;">${date}</span>
                     <h3 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 15px;">${post.title}</h3>
                     <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px;">
                         ${post.excerpt ? post.excerpt.substring(0, 80) + "..." : ""}
