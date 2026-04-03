@@ -215,20 +215,110 @@ function updateSEO(post, slug) {
   setArticleJsonLd(post, canonicalUrl, description, imageUrl);
 }
 
+function getBlockTag(style) {
+  const allowedTags = new Set([
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "blockquote",
+  ]);
+
+  return allowedTags.has(style) ? style : "p";
+}
+
+function applyMark(text, mark, markDefsByKey) {
+  switch (mark) {
+    case "strong":
+      return `<strong>${text}</strong>`;
+    case "em":
+      return `<em>${text}</em>`;
+    case "underline":
+      return `<u>${text}</u>`;
+    case "code":
+      return `<code>${text}</code>`;
+    case "strike-through":
+      return `<s>${text}</s>`;
+    default: {
+      const markDef = markDefsByKey[mark];
+
+      if (markDef?._type === "link" && markDef.href) {
+        const href = escapeHtml(String(markDef.href));
+        const isExternal = /^https?:\/\//i.test(markDef.href);
+        const target = isExternal ? ' target="_blank"' : "";
+        const rel = isExternal ? ' rel="noopener noreferrer"' : "";
+        return `<a href="${href}"${target}${rel}>${text}</a>`;
+      }
+
+      return text;
+    }
+  }
+}
+
+function renderBlockChildren(block) {
+  const markDefsByKey = Object.fromEntries(
+    (block.markDefs || []).map((markDef) => [markDef._key, markDef])
+  );
+
+  return (block.children || [])
+    .map((child) => {
+      if (!child || child._type !== "span") return "";
+
+      const safeText = escapeHtml(child.text || "").replace(/\n/g, "<br>");
+      const marks = Array.isArray(child.marks) ? child.marks : [];
+
+      return marks.reduce(
+        (formattedText, mark) =>
+          applyMark(formattedText, mark, markDefsByKey),
+        safeText
+      );
+    })
+    .join("");
+}
+
 function renderPost(post) {
-  const content =
-    post.body
-      ?.map((block) => {
-        if (!block || block._type !== "block") return "";
+  const fragments = [];
+  let openListTag = "";
 
-        const tag = block.style === "h2" ? "h2" : "p";
-        const text = (block.children || [])
-          .map((child) => escapeHtml(child?.text || ""))
-          .join("");
+  (post.body || []).forEach((block) => {
+    if (!block || block._type !== "block") return;
 
-        return `<${tag}>${text}</${tag}>`;
-      })
-      .join("") || "";
+    const text = renderBlockChildren(block);
+    if (!text.trim()) return;
+
+    if (block.listItem) {
+      const listTag = block.listItem === "number" ? "ol" : "ul";
+
+      if (openListTag && openListTag !== listTag) {
+        fragments.push(`</${openListTag}>`);
+        openListTag = "";
+      }
+
+      if (!openListTag) {
+        openListTag = listTag;
+        fragments.push(`<${listTag}>`);
+      }
+
+      fragments.push(`<li>${text}</li>`);
+      return;
+    }
+
+    if (openListTag) {
+      fragments.push(`</${openListTag}>`);
+      openListTag = "";
+    }
+
+    const tag = getBlockTag(block.style);
+    fragments.push(`<${tag}>${text}</${tag}>`);
+  });
+
+  if (openListTag) {
+    fragments.push(`</${openListTag}>`);
+  }
+
+  const content = fragments.join("");
 
   const title = escapeHtml(post.title || "Article");
   const imageUrl = escapeHtml(post.imageUrl || FALLBACK_IMAGE);
