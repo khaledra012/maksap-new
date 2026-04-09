@@ -2,62 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://maksab-ksa.com/home</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/about</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services-SEO</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services-social.media</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services-motion</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services-content</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/services-wep.devolpment</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/Advertising-content-management</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/maksap-ai</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/blog</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://maksab-ksa.com/contact-us</loc>
-    <lastmod>2026-02-25</lastmod>
+    <lastmod>2026-04-09</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://maksab-ksa.com/blog/The-Ultimate-Guide-to-Generative-Search-Engine-Optimization-(GEO)-How-to-Rank-High-in-AIResults-in-2026</loc>
+    <lastmod>2026-04-09</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://maksab-ksa.com/blog/Advertising-campaign-management</loc>
+    <lastmod>2026-04-09</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://maksab-ksa.com/blog/Advertising-Campaign-Management-Strategies-in-Saudi-Arabia-and-the-Leading-Role-of-Makasb-Business-Services</loc>
+    <lastmod>2026-04-09</lastmod>
     <priority>0.70</priority>
   </url>
 </urlset>

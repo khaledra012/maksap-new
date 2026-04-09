@@ -350,7 +350,7 @@ async function loadBlogPosts() {
     const container = document.getElementById("posts-container");
     if (!container) return;
 
-    container.innerHTML = ""; 
+    container.innerHTML = "";
 
     posts.forEach((post) => {
       // الكارت هنا واخد كلاس swiper-slide
@@ -418,5 +418,3 @@ function updateSEO(post) {
   updateMeta("keywords", post.seo.keywords);
 }
 
-// انطلاق!
-loadBlogPosts();

@@ -1,4 +1,4 @@
-<h1 align="center">🚀 Maksab KSA | Official Website</h1>
+<h1 align="center">ًںڑ€ Maksab KSA | Official Website</h1>
 
 <p align="center">
   A professional corporate website for "Maksab", designed for blazing-fast performance, SEO optimization, and integrated with a dynamic Headless CMS for the blog.
@@ -6,7 +6,7 @@
 
 ---
 
-## 🛠️ Tech Stack
+## ًں› ï¸ڈ Tech Stack
 
 This project is built using a modern stack to ensure the best performance and user experience:
 
@@ -17,19 +17,19 @@ This project is built using a modern stack to ensure the best performance and us
 
 ---
 
-## ✨ Key Features
+## âœ¨ Key Features
 
-* **⚡ Blazing Fast Performance:** A static frontend ensuring lightning-fast load times for visitors.
-* **📝 Dynamic Blog:** Fetches articles in real-time from Sanity CMS without needing code modifications.
-* **🔄 Auto-Deployment:** Any push to the `main` branch is instantly pulled and deployed to the live server within seconds.
-* **🔍 SEO Optimized:** * Secure external links (`target="_blank" rel="noopener noreferrer"`).
+* **âڑ، Blazing Fast Performance:** A static frontend ensuring lightning-fast load times for visitors.
+* **ًں“‌ Dynamic Blog:** Fetches articles in real-time from Sanity CMS without needing code modifications.
+* **ًں”„ Auto-Deployment:** Any push to the `main` branch is instantly pulled and deployed to the live server within seconds.
+* **ًں”چ SEO Optimized:** * Secure external links (`target="_blank" rel="noopener noreferrer"`).
   * Integrated Sitemap.
   * Connected to Google Search Console.
-* **📱 Fully Responsive:** Works flawlessly across all devices (Mobile, Tablet, Desktop).
+* **ًں“± Fully Responsive:** Works flawlessly across all devices (Mobile, Tablet, Desktop).
 
 ---
 
-## 🚀 Deployment Flow
+## ًںڑ€ Deployment Flow
 
 For Developers: This repository is connected to the Hostinger server via a GitHub Webhook. To update the live website:
 
@@ -38,10 +38,10 @@ For Developers: This repository is connected to the Hostinger server via a GitHu
 3. Push to live: `git push origin main`
 4. *The server will automatically fetch and deploy the new files.*
 
-> **⚠️ Important Note (CORS):** To ensure articles load correctly, the domain `https://maksab-ksa.com` must be added to the CORS Origins list in the Sanity project settings with `Allow credentials` enabled.
+> **âڑ ï¸ڈ Important Note (CORS):** To ensure articles load correctly, the domain `https://maksab-ksa.com` must be added to the CORS Origins list in the Sanity project settings with `Allow credentials` enabled.
 
 ---
 
-## 📬 Important Links
+## ًں“¬ Important Links
 
 * **Live Website:** [https://maksab-ksa.com](https://maksab-ksa.com)
